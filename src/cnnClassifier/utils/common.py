@@ -13,7 +13,7 @@ import base64
 
 
 @ensure_annotations
-def read_yaml(path_to_you: Path) -> ConfigBox:
+def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml fle and returns
 
     Args:
