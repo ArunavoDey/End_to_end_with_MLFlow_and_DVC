@@ -24,7 +24,7 @@ if __name__=="__main__":
         raise e
     try:
         logger.info(f"*************************")
-        logger.info(">>>>> stage name {STAGE_NAME_2} started <<<<<<<<")
+        logger.info(f">>>>> stage name {STAGE_NAME_2} started <<<<<<<<")
         obj = PrepareBaseModelTrainingPipeline()
         obj.main()
         logger.info(f">>>>> stage {STAGE_NAME_2} completed <<<<<<\n\nx============x")
@@ -34,7 +34,7 @@ if __name__=="__main__":
     
     try:
         logger.info(f"*************************")
-        logger.info(">>>>> stage name {STAGE_NAME_3} started <<<<<<<<")
+        logger.info(f">>>>> stage name {STAGE_NAME_3} started <<<<<<<<")
         obj = ModelTrainingPipeline()
         obj.main()
         logger.info(f">>>>> stage {STAGE_NAME_3} completed <<<<<<\n\nx============x")
@@ -45,7 +45,7 @@ if __name__=="__main__":
 
     try:
         logger.info(f"*************************")
-        logger.info(">>>>> stage name {STAGE_NAME_4} started <<<<<<<<")
+        logger.info(f">>>>> stage name {STAGE_NAME_4} started <<<<<<<<")
         obj = ModelEvaluationPipeline()
         obj.main()
         logger.info(f">>>>> stage {STAGE_NAME_4} completed <<<<<<\n\nx============x")

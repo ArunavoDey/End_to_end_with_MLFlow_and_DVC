@@ -27,7 +27,7 @@ class Training:
         )
 
         valid_datagenerator = tf.keras.preprocessing.image.ImageDataGenerator(
-            **dataflow_kwargs
+            **datagenerator_kwargs
         )
 
         self.valid_generator= valid_datagenerator.flow_from_directory(
@@ -45,13 +45,13 @@ class Training:
                 height_shift_range= 0.2,
                 shear_range= 0.2,
                 zoom_range= 0.2,
-                **dataflow_kwargs
+                **datagenerator_kwargs
             )
         else:
             train_datagenerator = valid_datagenerator
         self.train_generator= train_datagenerator.flow_from_directory(
             directory= self.config.training_data,
-            subset= "Training",
+            subset= "training",
             shuffle= True,
             **dataflow_kwargs
         )
@@ -67,7 +67,7 @@ class Training:
 
         self.model.fit(
             self.train_generator,
-            epochs= self.config.params.epochs,
+            epochs= self.config.params_epochs,
             steps_per_epoch= self.steps_per_epoch,
             validation_steps= self.validation_steps,
             validation_data= self.valid_generator
