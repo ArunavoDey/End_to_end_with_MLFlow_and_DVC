@@ -11,3 +11,13 @@
 7. Update the pipeline
 8. Update the main.py
 9. Update the dvc.yaml
+
+
+#### ML FLow Credentials
+## import dagshub
+## dagshub.init(repo_owner='ArunavoDey', repo_name='End_to_end_with_MLFlow_and_DVC', mlflow=True)
+
+## import mlflow
+## with mlflow.start_run():
+##  mlflow.log_param('parameter name', 'value')
+##  mlflow.log_metric('metric name', 1)

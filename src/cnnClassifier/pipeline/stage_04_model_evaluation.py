@@ -1,27 +1,28 @@
 from cnnClassifier.utils.common import logger
 from cnnClassifier.config.configuration import ConfigurationManager
-from cnnClassifier.entity.config_entity import PrepareBaseModelConfig
+from cnnClassifier.entity.config_entity import EvaluationConfig
 from cnnClassifier.components.prepare_base_model import PrepareBaseModel
+from cnnClassifier.components.model_trainer import Training
+from cnnClassifier.components.model_evaluation_with_mlflow import Evaluation
 
-STAGE_NAME = "Prepare_base_model"
+STAGE_NAME = "Model_evaluation"
 
-class PrepareBaseModelTrainingPipeline:
-    def __init__(self):
+class ModelEvaluationPipeline():
+    def __init__():
         pass
 
     def main(self):
         config = ConfigurationManager()
-        prepare_base_model_config = config.prepare_base_model_config()
-        prepare_base_model = PrepareBaseModel(config=prepare_base_model_config)
-        prepare_base_model.get_base_model()
-        prepare_base_model.update_base_model()
+        evaluation_config = config.get_evaluation_config()
+        model_evaluation = Evaluation(config=evaluation_config)
+        model_evaluation.evaluation()
+        model_evaluation.log_intto_mlflow()
 
-
-if __name__ =="__main__":
+if __name__=="__main__":
     try:
         logger.info(f"*************************")
         logger.info(">>>>> stage name {STAGE_NAME} started <<<<<<<<")
-        obj = PrepareBaseModelTrainingPipeline()
+        obj = ModelEvaluationPipeline()
         obj.main()
         logger.info(f">>>>> stage {STAGE_NAME} completed <<<<<<\n\nx============x")
     except Exception as e:

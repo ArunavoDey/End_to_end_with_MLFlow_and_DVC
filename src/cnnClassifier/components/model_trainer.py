@@ -3,7 +3,7 @@ from urllib.request import Request
 from zipfile import ZipFile
 import tensorflow as tf
 import time
-from cnnClassifier.entity import TrainingConfig
+from cnnClassifier.entity.config_entity import TrainingConfig
 from pathlib import Path
 
 class Training:
@@ -21,7 +21,7 @@ class Training:
         )
 
         dataflow_kwargs = dict(
-            target_size= self.config.params_image_size[:1],
+            target_size= self.config.params_image_size[:-1],
             batch_size= self.config.params_batch_size,
             interpolation = "bilinear"
         )
