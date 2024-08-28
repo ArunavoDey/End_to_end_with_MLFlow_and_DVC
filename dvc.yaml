@@ -45,6 +45,4 @@ stages:
     params:
       - IMAGE_SIZE
       - BATCH_SIZE
-    metrics:
-      - scores.json
 
