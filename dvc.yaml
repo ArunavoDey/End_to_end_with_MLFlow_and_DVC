@@ -35,7 +35,7 @@ stages:
       - LEARNING_RATE
     outs:
       - artifacts/training/model.h5
-  model_evaluation:
+  evaluation:
     cmd: python3 src/cnnClassifier/pipeline/stage_04_model_evaluation.py
     deps:
       - src/cnnClassifier/pipeline/stage_04_model_evaluation.py
