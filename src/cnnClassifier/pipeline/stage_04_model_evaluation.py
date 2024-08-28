@@ -8,7 +8,7 @@ from cnnClassifier.components.model_evaluation_with_mlflow import Evaluation
 STAGE_NAME = "Model_evaluation"
 
 class ModelEvaluationPipeline():
-    def __init__():
+    def __init__(self):
         pass
 
     def main(self):

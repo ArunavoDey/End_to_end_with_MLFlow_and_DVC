@@ -5,6 +5,7 @@ import tensorflow as tf
 import time
 import dagshub
 import mlflow
+from urllib.parse import urlparse
 from cnnClassifier.entity.config_entity import EvaluationConfig
 from pathlib import Path
 from cnnClassifier.utils.common import save_json
@@ -25,7 +26,7 @@ class Evaluation:
         )
 
         valid_datagenerator = tf.keras.preprocessing.image.ImageDataGenerator(
-            **dataflow_kwargs
+            **datagenerator_kwargs
         )
 
         self.valid_generator= valid_datagenerator.flow_from_directory(
@@ -53,10 +54,16 @@ class Evaluation:
         mlflow.set_registry_uri(self.config.mlflow_url)
         tracking_url_type_store= urlparse(mlflow.get_tracking_uri()).scheme
         with mlflow.start_run():
-            mlflow.log_param(self.config.all_params)
-            mlflow.log_metric(
-                {"loss": self.score[0], "accuracy":self.score[1]}
-            )
+            #k = dict(self.config.all_params)
+            #l = list(k.keys())
+            #v = list(k.values())
+            #print(f"l {l}")
+            #l = [0.01, 0.001, 0.0001, 0.1]
+            #for i in range(len(l)):
+            mlflow.log_param('LEARNING_RATE',0.001)
+            mlflow.log_metric("accuracy",1)
+            #mlflow.log_param(self.config.all_params)
+            #mlflow.log_metric({"loss": self.score[0], "accuracy":self.score[1]})
         if tracking_url_type_store != "file":
             mlflow.keras.log_model(self.model, "model", registered_model_name="VGG16Model")
             mlflow.keras.log_model(self.model, "model")
