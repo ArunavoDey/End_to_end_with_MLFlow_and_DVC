@@ -33,6 +33,7 @@ stages:
       - CLASSES
       - WEIGHTS
       - LEARNING_RATE
+      - EPOCHS
     outs:
       - artifacts/training/model.h5
   evaluation:
